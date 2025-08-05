@@ -50,10 +50,9 @@ export const conversations = pgTable("conversations", {
 export const messages = pgTable("messages", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
   conversationId: varchar("conversation_id").references(() => conversations.id, { onDelete: "cascade" }).notNull(),
-  role: varchar("role").notNull(), // user, coordinator, code_ai, design_ai, writing_ai, analysis_ai
+  role: varchar("role").notNull(), // "user" or "assistant"
   content: text("content").notNull(),
-  specialist: varchar("specialist"), // which AI specialist sent this message
-  metadata: jsonb("metadata"), // additional data like code blocks, attachments, etc.
+  selectedModel: varchar("selected_model").default("coordinator"), // AI model used
   createdAt: timestamp("created_at").defaultNow(),
 });
 
@@ -95,8 +94,7 @@ export const insertMessageSchema = createInsertSchema(messages).pick({
   conversationId: true,
   role: true,
   content: true,
-  specialist: true,
-  metadata: true,
+  selectedModel: true,
 });
 
 // Types

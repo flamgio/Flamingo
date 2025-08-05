@@ -2,113 +2,112 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: hsl(0, 0%, 100%);
-  --foreground: hsl(20, 14.3%, 4.1%);
-  --muted: hsl(60, 4.8%, 95.9%);
-  --muted-foreground: hsl(25, 5.3%, 44.7%);
-  --popover: hsl(0, 0%, 100%);
-  --popover-foreground: hsl(20, 14.3%, 4.1%);
-  --card: hsl(0, 0%, 100%);
-  --card-foreground: hsl(20, 14.3%, 4.1%);
-  --border: hsl(20, 5.9%, 90%);
-  --input: hsl(20, 5.9%, 90%);
-  --primary: hsl(18, 100%, 60%);
-  --primary-foreground: hsl(0, 0%, 100%);
-  --secondary: hsl(60, 4.8%, 95.9%);
-  --secondary-foreground: hsl(24, 9.8%, 10%);
-  --accent: hsl(60, 4.8%, 95.9%);
-  --accent-foreground: hsl(24, 9.8%, 10%);
-  --destructive: hsl(0, 84.2%, 60.2%);
-  --destructive-foreground: hsl(60, 9.1%, 97.8%);
-  --ring: hsl(20, 14.3%, 4.1%);
-  --radius: 0.5rem;
-  
-  /* Flamgio brand colors */
-  --flamgio-orange: hsl(18, 100%, 60%);
-  --flamgio-pink: hsl(350, 100%, 76%);
-  --flamgio-coral: hsl(0, 100%, 75%);
-  --flamgio-light: hsl(25, 100%, 70%);
-}
+@layer base {
+  :root {
+    /* Perplexity-style Light Orange Theme */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 24 100% 70%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 24 100% 97%;
+    --secondary-foreground: 24 100% 25%;
+    --muted: 0 0% 98%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 24 100% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 95%;
+    --ring: 24 100% 70%;
+    --radius: 0.75rem;
+    
+    /* Custom Orange Variables */
+    --orange-50: 24 100% 97%;
+    --orange-100: 24 100% 94%;
+    --orange-200: 24 100% 87%;
+    --orange-300: 24 100% 77%;
+    --orange-400: 24 100% 67%;
+    --orange-500: 24 100% 60%;
+    --orange-600: 24 100% 53%;
+    --orange-700: 24 100% 45%;
+    --orange-800: 24 100% 38%;
+    --orange-900: 24 100% 30%;
+  }
 
-.dark {
-  --background: hsl(240, 10%, 3.9%);
-  --foreground: hsl(0, 0%, 98%);
-  --muted: hsl(240, 3.7%, 15.9%);
-  --muted-foreground: hsl(240, 5%, 64.9%);
-  --popover: hsl(240, 10%, 3.9%);
-  --popover-foreground: hsl(0, 0%, 98%);
-  --card: hsl(240, 10%, 3.9%);
-  --card-foreground: hsl(0, 0%, 98%);
-  --border: hsl(240, 3.7%, 15.9%);
-  --input: hsl(240, 3.7%, 15.9%);
-  --primary: hsl(18, 100%, 60%);
-  --primary-foreground: hsl(0, 0%, 100%);
-  --secondary: hsl(240, 3.7%, 15.9%);
-  --secondary-foreground: hsl(0, 0%, 98%);
-  --accent: hsl(240, 3.7%, 15.9%);
-  --accent-foreground: hsl(0, 0%, 98%);
-  --destructive: hsl(0, 62.8%, 30.6%);
-  --destructive-foreground: hsl(0, 0%, 98%);
-  --ring: hsl(240, 4.9%, 83.9%);
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 24 100% 70%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 24 100% 60%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 24 100% 70%;
+  }
 }
 
 @layer base {
   * {
     @apply border-border;
   }
-
   body {
-    @apply font-sans antialiased bg-background text-foreground;
-    font-family: 'Inter', sans-serif;
+    @apply bg-background text-foreground font-sans;
   }
 }
 
 @layer utilities {
-  .glow-input:focus {
-    box-shadow: 0 0 20px rgba(255, 107, 53, 0.3), 0 0 40px rgba(255, 107, 53, 0.1);
+  .orange-gradient {
+    background: linear-gradient(135deg, hsl(var(--orange-500)) 0%, hsl(var(--orange-600)) 100%);
   }
   
-  .gradient-text {
-    background: linear-gradient(135deg, hsl(18, 100%, 60%) 0%, hsl(350, 100%, 76%) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .orange-gradient-light {
+    background: linear-gradient(135deg, hsl(var(--orange-50)) 0%, hsl(var(--orange-100)) 100%);
   }
   
-  .flamgio-gradient {
-    background: linear-gradient(135deg, hsl(18, 100%, 60%) 0%, hsl(350, 100%, 76%) 100%);
+  .perplexity-shadow {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   }
   
-  .flamgio-gradient-light {
-    background: linear-gradient(135deg, hsl(25, 100%, 70%) 0%, hsl(0, 100%, 75%) 100%);
+  .perplexity-shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   }
   
-  .chat-bubble {
-    animation: fadeIn 0.3s ease-in;
+  .chat-message-user {
+    background: linear-gradient(135deg, hsl(var(--orange-500)) 0%, hsl(var(--orange-600)) 100%);
+    color: white;
+    border-radius: 18px 18px 4px 18px;
   }
   
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+  .chat-message-assistant {
+    background: hsl(var(--muted));
+    color: hsl(var(--foreground));
+    border-radius: 18px 18px 18px 4px;
   }
   
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+  .perplexity-input {
+    border-radius: 24px;
+    border: 2px solid hsl(var(--border));
+    transition: all 0.2s ease-in-out;
   }
   
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-  
-  .animate-gradient {
-    background-size: 200% 200%;
-    animation: gradient 3s ease infinite;
-  }
-  
-  @keyframes gradient {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+  .perplexity-input:focus {
+    border-color: hsl(var(--orange-500));
+    box-shadow: 0 0 0 3px hsla(var(--orange-500), 0.1);
   }
 }

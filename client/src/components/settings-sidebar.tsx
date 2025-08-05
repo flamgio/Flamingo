@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useAuth } from "@/hooks/useAuth";
+import type { User } from "@shared/schema";
 
 interface SettingsSidebarProps {
   isOpen: boolean;
@@ -14,7 +15,7 @@ interface SettingsSidebarProps {
 }
 
 export default function SettingsSidebar({ isOpen, onClose }: SettingsSidebarProps) {
-  const { user } = useAuth();
+  const { user } = useAuth() as { user: User | null };
   const [serviceTier, setServiceTier] = useState("free");
   const [ollamaUrl, setOllamaUrl] = useState("http://localhost:11434");
 
