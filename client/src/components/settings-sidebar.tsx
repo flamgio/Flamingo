@@ -41,7 +41,7 @@ export default function SettingsSidebar({ isOpen, onClose }: SettingsSidebarProp
             <h3 className="font-semibold text-gray-900 mb-4">Profile</h3>
             <div className="flex items-center space-x-4 mb-4">
               <Avatar className="w-16 h-16">
-                <AvatarImage src={user?.profileImageUrl} className="object-cover" />
+                <AvatarImage src={user?.profileImageUrl || undefined} className="object-cover" />
                 <AvatarFallback className="bg-primary text-primary-foreground">
                   {user?.firstName?.[0] || user?.email?.[0] || 'U'}
                 </AvatarFallback>

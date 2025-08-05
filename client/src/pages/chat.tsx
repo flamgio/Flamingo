@@ -172,7 +172,7 @@ export default function Chat() {
                 <Settings className="w-5 h-5" />
               </Button>
               <Avatar className="w-8 h-8">
-                <AvatarImage src={user?.profileImageUrl} />
+                <AvatarImage src={user?.profileImageUrl || undefined} />
                 <AvatarFallback className="bg-orange-100 text-orange-700">
                   {user?.firstName?.[0] || user?.email?.[0] || 'U'}
                 </AvatarFallback>
@@ -281,7 +281,7 @@ export default function Chat() {
                       
                       {message.role === 'user' && (
                         <Avatar className="w-8 h-8 flex-shrink-0">
-                          <AvatarImage src={user?.profileImageUrl} />
+                          <AvatarImage src={user?.profileImageUrl || undefined} />
                           <AvatarFallback className="bg-orange-100 text-orange-700">
                             {user?.firstName?.[0] || user?.email?.[0] || 'U'}
                           </AvatarFallback>
