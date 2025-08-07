@@ -1,29 +1,44 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
+    /* Perplexity-style Light Orange Theme */
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 20.5 90.2% 48.2%;
-    --primary-foreground: 60 9.1% 97.8%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 84% 4.9%;
-    --muted: 210 40% 96%;
+    --primary: 24 100% 70%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 24 100% 97%;
+    --secondary-foreground: 24 100% 25%;
+    --muted: 0 0% 98%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 84% 4.9%;
+    --accent: 24 100% 60%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 20.5 90.2% 48.2%;
-    --radius: 0.5rem;
+    --border: 220 13% 91%;
+    --input: 220 13% 95%;
+    --ring: 24 100% 70%;
+    --radius: 0.75rem;
+    
+    /* Custom Orange Variables */
+    --orange-50: 24 100% 97%;
+    --orange-100: 24 100% 94%;
+    --orange-200: 24 100% 87%;
+    --orange-300: 24 100% 77%;
+    --orange-400: 24 100% 67%;
+    --orange-500: 24 100% 60%;
+    --orange-600: 24 100% 53%;
+    --orange-700: 24 100% 45%;
+    --orange-800: 24 100% 38%;
+    --orange-900: 24 100% 30%;
+    
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
@@ -38,19 +53,19 @@
     --card-foreground: 210 40% 98%;
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-    --primary: 20.5 90.2% 48.2%;
-    --primary-foreground: 60 9.1% 97.8%;
+    --primary: 24 100% 70%;
+    --primary-foreground: 222.2 84% 4.9%;
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 24 100% 60%;
+    --accent-foreground: 222.2 84% 4.9%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 20.5 90.2% 48.2%;
+    --ring: 24 100% 70%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
@@ -64,7 +79,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
   }
 }
 
@@ -85,13 +100,40 @@
     background-clip: text;
   }
 
+  .orange-gradient-light {
+    background: linear-gradient(135deg, hsl(var(--orange-50)) 0%, hsl(var(--orange-100)) 100%);
+  }
+  
+  .perplexity-shadow {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+  
+  .perplexity-shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
   /* Chat message styles */
   .chat-message-user {
-    @apply bg-primary text-primary-foreground rounded-2xl rounded-br-sm;
+    background: linear-gradient(135deg, hsl(var(--orange-500)) 0%, hsl(var(--orange-600)) 100%);
+    color: white;
+    border-radius: 18px 18px 4px 18px;
   }
   
   .chat-message-assistant {
-    @apply bg-muted text-muted-foreground rounded-2xl rounded-bl-sm;
+    background: hsl(var(--muted));
+    color: hsl(var(--foreground));
+    border-radius: 18px 18px 18px 4px;
+  }
+  
+  .perplexity-input {
+    border-radius: 24px;
+    border: 2px solid hsl(var(--border));
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .perplexity-input:focus {
+    border-color: hsl(var(--orange-500));
+    box-shadow: 0 0 0 3px hsla(var(--orange-500), 0.1);
   }
 
   /* Animations */
@@ -133,115 +175,5 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-foreground/60;
-}
-
-@layer base {
-  :root {
-    /* Perplexity-style Light Orange Theme */
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 24 100% 70%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 24 100% 97%;
-    --secondary-foreground: 24 100% 25%;
-    --muted: 0 0% 98%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 24 100% 60%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 220 13% 91%;
-    --input: 220 13% 95%;
-    --ring: 24 100% 70%;
-    --radius: 0.75rem;
-    
-    /* Custom Orange Variables */
-    --orange-50: 24 100% 97%;
-    --orange-100: 24 100% 94%;
-    --orange-200: 24 100% 87%;
-    --orange-300: 24 100% 77%;
-    --orange-400: 24 100% 67%;
-    --orange-500: 24 100% 60%;
-    --orange-600: 24 100% 53%;
-    --orange-700: 24 100% 45%;
-    --orange-800: 24 100% 38%;
-    --orange-900: 24 100% 30%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 24 100% 70%;
-    --primary-foreground: 222.2 84% 4.9%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 24 100% 60%;
-    --accent-foreground: 222.2 84% 4.9%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 24 100% 70%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground font-sans;
-  }
-}
-
-@layer utilities {
-  .orange-gradient {
-    background: linear-gradient(135deg, hsl(var(--orange-500)) 0%, hsl(var(--orange-600)) 100%);
-  }
-  
-  .orange-gradient-light {
-    background: linear-gradient(135deg, hsl(var(--orange-50)) 0%, hsl(var(--orange-100)) 100%);
-  }
-  
-  .perplexity-shadow {
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  }
-  
-  .perplexity-shadow-lg {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  }
-  
-  .chat-message-user {
-    background: linear-gradient(135deg, hsl(var(--orange-500)) 0%, hsl(var(--orange-600)) 100%);
-    color: white;
-    border-radius: 18px 18px 4px 18px;
-  }
-  
-  .chat-message-assistant {
-    background: hsl(var(--muted));
-    color: hsl(var(--foreground));
-    border-radius: 18px 18px 18px 4px;
-  }
-  
-  .perplexity-input {
-    border-radius: 24px;
-    border: 2px solid hsl(var(--border));
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .perplexity-input:focus {
-    border-color: hsl(var(--orange-500));
-    box-shadow: 0 0 0 3px hsla(var(--orange-500), 0.1);
-  }
+  @apply bg-foreground/30;
 }
