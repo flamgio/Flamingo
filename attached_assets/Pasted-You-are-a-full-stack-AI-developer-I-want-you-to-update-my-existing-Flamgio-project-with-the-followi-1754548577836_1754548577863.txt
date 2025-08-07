@@ -1,0 +1,57 @@
+You are a full-stack AI developer. I want you to update my existing Flamgio project with the following features, fixing all errors in all files as you go:
+
+1️⃣ AGENT SYSTEM:
+- Create an `agent.js` in /lib that routes user prompts to either a Hugging Face Spaces model (local) or OpenRouter models based on complexity.
+- Complexity logic: short/simple prompts → Hugging Face Spaces; long/complex → OpenRouter.
+- Add support for these 7 OpenRouter free models:
+    1. moonshotai/kimi-k2:free
+    2. moonshotai/kimi-dev-72b:free
+    3. mistralai/mixtral-8x7b-instruct:free
+    4. gryphe/mythomax-l2-13b:free
+    5. nousresearch/nous-capybara-7b:free
+    6. moonshotai/kimi-vl-a3b-thinking:free
+    7. meta-llama/llama-3.3-70b-instruct:free
+- Include auto-fallback: if a model hits rate limit or errors, switch to next in priority list.
+
+2️⃣ MEMORY SYSTEM:
+- Create `memory.js` in /lib that saves and loads past user conversations from a PostgreSQL database (already set up in the project).
+- Memory must be user-specific and persist between chats.
+
+3️⃣ BACKEND API ROUTE:
+- Create `/api/agent` route that:
+  - Reads user memory
+  - Routes prompt via agent.js
+  - Saves updated memory
+  - Returns AI response with model name used
+  - Before sending back, **format the AI’s message in embedded style**:
+    - Wrap important keywords and greetings like this: **__Hello__**, **__Hey__**, **__Important__**
+    - Maintain markdown formatting for bold/italic code blocks.
+
+4️⃣ HUGGING FACE SPACES INTEGRATION:
+- Add `.env` variables for HF_LOCAL_URL and OPENROUTER_KEY.
+- Hugging Face call should use `fetch()` with JSON body `{ inputs: prompt }`.
+
+5️⃣ FRONTEND IMPROVEMENTS:
+- Landing Page: white & orange gradient theme, smooth scroll animations, big call-to-action button.
+- Chat UI: Fully responsive Perplexity-style layout:
+  - Left sidebar for chat history & settings
+  - Main chat area with messages styled in bubbles
+  - Show model tag (e.g., “(Local Model)” or “(OpenRouter – Kimi-K2)”)
+  - Dark/Light mode toggle in navbar
+  - Typing animation for AI responses
+  - AI messages must appear in embedded markdown format as described above.
+- Mobile friendly design.
+
+6️⃣ ERROR FIXING:
+- Go through all existing files and fix all errors, unused imports, and warnings.
+- Ensure the build runs without any crash.
+
+7️⃣ FINAL TOUCH:
+- Push all changes so that the project is production-ready for Vercel deployment.
+- Use only free APIs for now, keys will be added later.
+
+IMPORTANT:
+- Do NOT remove any existing working features.
+- Keep code clean, modular, and well-commented.
+- Do all of the above in one go, without asking me further questions.
+-
