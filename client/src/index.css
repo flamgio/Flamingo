@@ -175,5 +175,5 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-foreground/30;
+  background-color: hsl(var(--foreground) / 0.3);
 }
